@@ -1,0 +1,160 @@
+# =====================================================
+# Email Sender Service - Git Ignore Rules
+# =====================================================
+
+# =====================================================
+# Environment Variables & Secrets
+# =====================================================
+# CRITICAL: Never commit these files!
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+secrets/
+
+# =====================================================
+# Dependencies
+# =====================================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# =====================================================
+# Testing & Coverage
+# =====================================================
+coverage/
+*.lcov
+.nyc_output/
+test-results/
+
+# =====================================================
+# Logs
+# =====================================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# =====================================================
+# Build Artifacts
+# =====================================================
+dist/
+build/
+.cache/
+*.tsbuildinfo
+
+# =====================================================
+# Docker
+# =====================================================
+# Don't ignore Dockerfiles, but ignore these:
+.dockerignore
+
+# =====================================================
+# Database
+# =====================================================
+# Don't commit local database files
+*.db
+*.sqlite
+*.sqlite3
+postgres_data/
+
+# =====================================================
+# IDE / Editor Configurations
+# =====================================================
+# VSCode
+.vscode/
+*.code-workspace
+
+# JetBrains (WebStorm, IntelliJ, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# =====================================================
+# Operating System Files
+# =====================================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# =====================================================
+# Temporary Files
+# =====================================================
+tmp/
+temp/
+*.tmp
+*.bak
+*.backup
+*.old
+
+# =====================================================
+# CSV Uploads (User Data)
+# =====================================================
+# Optionally ignore uploaded CSV files
+# Uncomment if you don't want to track test CSVs:
+# uploads/
+# *.csv
+
+# =====================================================
+# Documentation Builds
+# =====================================================
+# docs/_build/
+# site/
+
+# =====================================================
+# Development & Planning Files
+# =====================================================
+# Ignore task tracking and phase documentation
+tasks/
+PHASE-*-SUMMARY.md
+DEVELOPMENT_PLAN.md
+
+# Ignore development documentation (keep production docs)
+API_DOCUMENTATION.md
+CONTRIBUTING.md
+SECURITY_AUDIT.md
+
+# =====================================================
+# Miscellaneous
+# =====================================================
+.env.backup
+.venv/
+venv/
+ENV/
