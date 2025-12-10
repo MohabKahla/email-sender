@@ -457,25 +457,7 @@ const Auth = {
 // =======================
 // Event Listeners
 // =======================
-document.addEventListener('DOMContentLoaded', async () => {
-  // Check if already authenticated
-  if (TokenManager.isAuthenticated()) {
-    try {
-      // Verify token validity with backend before redirecting
-      await API.getCurrentUser();
-      
-      // If token is valid and we are not on dashboard, redirect
-      if (!window.location.pathname.includes('dashboard.html')) {
-        window.location.href = '/dashboard.html';
-        return;
-      }
-    } catch (error) {
-      console.warn('Token invalid or expired:', error);
-      TokenManager.removeToken();
-      // Stay on login page
-    }
-  }
-
+document.addEventListener('DOMContentLoaded', () => {
   // Login form
   const loginForm = document.getElementById('loginForm');
   if (loginForm) {
@@ -542,4 +524,20 @@ document.addEventListener('DOMContentLoaded', async () => {
       UI.clearFieldError(input.id);
     });
   });
+
+  // Check if already authenticated (do this last to not block event listeners)
+  if (TokenManager.isAuthenticated()) {
+    API.getCurrentUser()
+      .then(() => {
+        // If token is valid and we are not on dashboard, redirect
+        if (!window.location.pathname.includes('dashboard.html')) {
+          window.location.href = '/dashboard.html';
+        }
+      })
+      .catch((error) => {
+        console.warn('Token invalid or expired:', error);
+        TokenManager.removeToken();
+        // Stay on login page
+      });
+  }
 });
