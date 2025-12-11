@@ -10,7 +10,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
-      - "5432:5432"
+      - "5433:5432"
     networks:
       - email-sender-network
     healthcheck:
@@ -30,13 +30,13 @@ services:
         condition: service_healthy
     environment:
       NODE_ENV: ${NODE_ENV}
-      PORT: 3000
+      PORT: ${PORT:-4000}
       DATABASE_URL: ${DATABASE_URL}
       JWT_SECRET: ${JWT_SECRET}
       JWT_EXPIRES_IN: ${JWT_EXPIRES_IN}
       ENCRYPTION_KEY: ${ENCRYPTION_KEY}
     ports:
-      - "3000:3000"
+      - "4000:4000"
     networks:
       - email-sender-network
     restart: unless-stopped
@@ -49,7 +49,7 @@ services:
     depends_on:
       - backend
     ports:
-      - "80:80"
+      - "8080:80"
     networks:
       - email-sender-network
     restart: unless-stopped
